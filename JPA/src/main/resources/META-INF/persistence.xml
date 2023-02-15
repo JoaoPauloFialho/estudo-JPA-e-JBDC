@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- esse texto aqui é padrão-->
+<persistence version="2.2"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+	<!-- essa tag persistance-unit é nescessário para manipular as propriedades da aplicação-->
+	<persistence-unit name="loja" transaction-type="RESOURCE_LOCAL">
+		<properties>
+			<!-- condiguração padrão para setar o driver que o jdbc vai utilizar, a url do banco de dados e o usuario e senha-->
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="endereço" />
+			<property name="javax.persistence.jdbc.user" value="user" />
+			<property name="javax.persistence.jdbc.password" value="senha" />
+			<!-- configuração do dialeto do hibernate para mysql -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<!-- esse hbm2ddl.auto é pra configurar oq o hibernate vai fazer quando não encontrar a tabela, existem alguns parametros
+			no value="" como create -> sempre que criar um etitymanager ele vai criar as tabelas do 0, create-drop ele cria as tabelas 
+			quando tô usando a aplicação e quando fechar a aplicação ele droga, tem o update que ele só atualiza as tabelas mas se não tiver
+			nenhuma tabela ele cria mas ele não remove caso você remova coisas, tem a opção validate também que ele só valida se tá tudo certo
+			-->
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			
+		</properties>
+	</persistence-unit>
+</persistence>
